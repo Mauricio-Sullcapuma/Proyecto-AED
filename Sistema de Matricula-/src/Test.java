@@ -9,16 +9,42 @@ public class Test {
 	private static int tipo_usuario; // 1 estudiante, 2 maestro
 
 	// Base de datos
-	private ArrayList<Docente> docentes = new ArrayList<Docente>();
-	private ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
-	private ArrayList<Curso> cursos = new ArrayList<Curso>();
-	// siesque ubiera mas entidades se aumenta
+	private static ArrayList<Docente> docentes = new ArrayList<Docente>();
+	private static ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
+	private static ArrayList<Curso> cursos = new ArrayList<Curso>();
+	// siesque hubiera mas entidades se aumenta
 	
 	
 	
 	public static void main(String[] args) {
 		// Iniciar a las entidades por defecto
 		// ejm. ingresar a maestros existentes
+		docentes.add(new Docente("Juan", "M", 74859632, 25, "Av AQP 123", "12345", "D01", 125));
+		docentes.add(new Docente("Pedro", "M", 74859632, 17, "Av AQP 456", "12345", "D02", 125));
+		docentes.add(new Docente("Fiorella", "F", 85632147, 31, "Av AQP 789", "12345", "D03", 125));
+		docentes.add(new Docente("German", "M", 74859632, 17, "Av AQP 101", "12345", "D04", 125));
+		docentes.add(new Docente("Gloria", "F", 74859632, 22, "Av AQP 123", "12345", "D05", 125));
+		
+		estudiantes.add(new Estudiante("Robert", "M", 52639874, 15, "Av 123", "12345", "E123", false, new Curso [] {
+				new Curso("Fp1", new Hora(), new Fecha(10, 10, 1991)),
+				new Curso("Fp2", new Hora(), new Fecha(12, 5, 1996))
+		}, "1er grado"));
+		
+		estudiantes.add(new Estudiante("Romina", "F", 52639874, 15, "Av 123", "12345", "E456", false, new Curso [] {
+				new Curso("Fp3", new Hora(), new Fecha(10, 10, 1991)),
+				new Curso("Fp4", new Hora(), new Fecha(12, 5, 1996))
+		}, "2do grado"));
+		
+		estudiantes.add(new Estudiante("Abelardo", "M", 52639874, 15, "Av 123", "12345", "E789", false, new Curso [] {
+				new Curso("Fp5", new Hora(), new Fecha(10, 10, 1991)),
+				new Curso("Fp6", new Hora(), new Fecha(12, 5, 1996))
+		}, "3er grado"));
+		
+		estudiantes.add(new Estudiante("Cintia", "F", 52639874, 15, "Av 123", "12345", "E856", false, new Curso [] {
+				new Curso("Fp7", new Hora(), new Fecha(10, 10, 1991)),
+				new Curso("Fp8", new Hora(), new Fecha(12, 5, 1996))
+		}, "4to grado"));
+		
 		
 		Scanner scan = new Scanner(System.in);
 		
@@ -82,24 +108,31 @@ public class Test {
 		
 		System.out.println("\nFin del programa...");
 		
-		/*
-		Hora h1=new Hora();
-		Fecha f1=new Fecha(31,5,2021);
-		
-		h1.mostrarhora();
-		h1.definirHora(1,30);
-		
-		Curso cu=new Curso("Matematica",h1,f1);
-		System.out.println(cu);
-		h1.definirHora(1,33);
-		Codigo co=new Codigo('a','b','c','d','e');
-		System.out.println(co);
-		*/
-		
-		
 	}
 	
-	public static boolean validarLogin(String usuario, String clave) {
+	public static boolean validarLogin(String codigo, String clave) {
+		if (codigo.charAt(0) == 'E') {
+			// siesque el codigo es de estudiante
+			for (int i = 0; i < estudiantes.size(); i++) {
+				if (estudiantes.get(i).getCodigo_E().equals(codigo) && 
+						estudiantes.get(i).getPassword().equals(clave)) {
+					usuarioLogeado = estudiantes.get(i);
+					tipo_usuario = 1;
+					return true;
+				}
+			}
+		} else {
+			// si el codigo es de docente
+			for (int i = 0; i < docentes.size(); i++) {
+				if (docentes.get(i).getCodigo_D().equals(codigo) &&
+						docentes.get(i).getPassword().equals(clave)) {
+					usuarioLogeado = docentes.get(i);
+					tipo_usuario = 2;
+					return true;
+				}
+			}
+		}
+		
 		return false;
 	}
 	
@@ -120,11 +153,21 @@ public class Test {
 	}
 	
 	public static void menuEstudiante() {
-		
+		System.out.println("\n\t\tMENU ESTUDIANTE");
+		System.out.println("\t1. Consultar Notas");
+		System.out.println("\t2. Ver Horario");
+		System.out.println("\t2. Ver Matricula");
+		System.out.println("\tOtro. Salir");
+		System.out.print("\n\tIngrese opcion: ");
 	}
 	
 	public static void menuMaestro() {
-		
+		System.out.println("\n\t\tMENU DOCENTE");
+		System.out.println("\t1. Registrar Notas");
+		System.out.println("\t2. Ver Horario");
+		System.out.println("\t2. Ver Cursos");
+		System.out.println("\tOtro. Salir");
+		System.out.print("\n\tIngrese opcion: ");
 	}
 
 }

@@ -2,12 +2,12 @@ package Tipo_Datos;
 import java.util.Scanner;
 public class Estudiante extends Usuario
 {
-    private int codigo_E;
+    private String codigo_E;
     private boolean matriculado;
     private Curso[] horario;
     private String grado;
     
-    public Estudiante(String nombre, String sexo, int dni, int edad, String direccion, String password, int codigo_E, boolean matriculado, Curso[] horario, String grado) 
+    public Estudiante(String nombre, String sexo, int dni, int edad, String direccion, String password, String codigo_E, boolean matriculado, Curso[] horario, String grado) 
     {
         super(nombre, sexo, dni, edad, direccion, password);
         this.codigo_E = codigo_E;
@@ -15,11 +15,11 @@ public class Estudiante extends Usuario
         this.horario = horario;
         this.grado = grado;
     }
-    public int getCodigo_E() 
+    public String getCodigo_E() 
     {
         return codigo_E;
     }
-    public void setCodigo_E(int codigo_E) 
+    public void setCodigo_E(String codigo_E) 
     {
         this.codigo_E = codigo_E;
     }

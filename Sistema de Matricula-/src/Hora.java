@@ -1,10 +1,12 @@
+package Tipo_Datos;
 import java.time.*;
+
 public class Hora {
-	private LocalTime horain;
+	private LocalTime hora_ingresada;
 
 	public void definirHora(int horIn,int minIn) {
-		this.horain=LocalTime.of(horIn,minIn);
-		System.out.println( "La hora de  ingresada  es : "+horain);
+		this.hora_ingresada=LocalTime.of(horIn,minIn);
+		System.out.println( "La hora de  ingresada es: "+hora_ingresada);
 		
 	}
 	public void mostrarhora() {
@@ -12,8 +14,7 @@ public class Hora {
 	}
 	@Override
 	public String toString() {
-		return  horain.toString() ;
+		return  hora_ingresada.toString() ;
 	}
 
 }
-

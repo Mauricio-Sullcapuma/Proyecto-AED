@@ -1,3 +1,5 @@
+package Tipo_Datos;
+
 import java.time.*;
 import java.util.GregorianCalendar;
 import java.util.Calendar;
@@ -20,7 +22,7 @@ public class Fecha implements Comparable<Fecha> {
 	public Integer getMes() {
 		return calendar.get(Calendar.MONTH);
 	}
-	public Integer getAño() {
+	public Integer getAnio() {
 		return calendar.get(Calendar.YEAR);
 	}
 	public String getDiaSemanaCadena() {
@@ -38,7 +40,7 @@ public class Fecha implements Comparable<Fecha> {
 		
 	}
 	public boolean esBisiesto() {
-		return this.calendar.isLeapYear(getAño());
+		return this.calendar.isLeapYear(getAnio());
 	}
 	public int compareTo(Fecha f) {
 		return this.calendar.compareTo(f.calendar);
@@ -64,7 +66,7 @@ public class Fecha implements Comparable<Fecha> {
 		return r;
 	}
 	public String toString() {
-		return getDiaSemanaCadena()+", "+getDiaMes()+", de"+getMesCadena()+", "+getAño();
+		return getDiaSemanaCadena()+" "+getDiaMes()+"/"+getMesCadena()+"/"+getAnio();
 	}
 	public void mostrarfecha() {
 		System.out.println( "La fecha actual es: " + LocalDate.now() );

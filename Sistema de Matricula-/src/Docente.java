@@ -1,10 +1,10 @@
-package estudiantes;
+package Tipo_Datos;
 
 import java.util.Scanner;
 
 public class Docente extends Usuario
 {
-    private int codigo_D;
+    private String codigo_D;
     private Curso[] horario;
     private double sueldo;
     public Docente(String nombre, String sexo, int dni, 
@@ -12,11 +12,25 @@ public class Docente extends Usuario
     {
         super(nombre, sexo, dni, edad, direccion, password);
     }
-    public int getCodigo_D() 
+    
+    
+    
+    public Docente(String nombre, String sexo, int dni, 
+    		int edad, String direccion, String password, String codigo_D,
+			double sueldo) {
+		super(nombre, sexo, dni, edad, direccion, password);
+		this.codigo_D = codigo_D;
+		this.horario = horario;
+		this.sueldo = sueldo;
+	}
+
+
+
+	public String getCodigo_D() 
     {
         return codigo_D;
     }
-    public void setCodigo_D(int codigo_D) 
+    public void setCodigo_D(String codigo_D) 
     {
         this.codigo_D = codigo_D;
     }
@@ -55,7 +69,7 @@ public class Docente extends Usuario
         Scanner sc = new Scanner(System.in);
         String dni = sc.nextLine();
         sc = new Scanner(System.in);
-        System.out.println("Ingrese contraseña: ");
+        System.out.println("Ingrese contrasena: ");
         String password = sc.nextLine();
         int entrada_dni = Integer.parseInt(dni);
         if (entrada_dni == this.getDni() && 

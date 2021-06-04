@@ -1,9 +1,11 @@
+package Tipo_Datos;
 
 public class Curso {
 	private Integer CodigoCurso;
 	private String NombreCurso;
 	private Hora hora;
 	private Fecha fecha;
+	
 	public Curso(String nombreCurso, Hora hora, Fecha fecha) {
 		super();
 		CodigoCurso=setCodigoCurso();
@@ -21,10 +23,7 @@ public class Curso {
 	}
 	@Override
 	public String toString() {
-		return "Curso [CodigoCurso=" + CodigoCurso + ", NombreCurso=" + NombreCurso + ", hora=" + hora + ", fecha="
+		return "Curso [CodigoCurso: " + CodigoCurso + ", NombreCurso: " + NombreCurso + ", hora: " + hora + ", fecha: "
 				+ fecha + "]";
 	}
-
-	
-
 }
