@@ -22,7 +22,7 @@ public class Fecha implements Comparable<Fecha> {
 	public Integer getMes() {
 		return calendar.get(Calendar.MONTH);
 	}
-	public Integer getAnio() {
+	public Integer getAño() {
 		return calendar.get(Calendar.YEAR);
 	}
 	public String getDiaSemanaCadena() {
@@ -40,7 +40,7 @@ public class Fecha implements Comparable<Fecha> {
 		
 	}
 	public boolean esBisiesto() {
-		return this.calendar.isLeapYear(getAnio());
+		return this.calendar.isLeapYear(getAño());
 	}
 	public int compareTo(Fecha f) {
 		return this.calendar.compareTo(f.calendar);
@@ -66,7 +66,7 @@ public class Fecha implements Comparable<Fecha> {
 		return r;
 	}
 	public String toString() {
-		return getDiaSemanaCadena()+" "+getDiaMes()+"/"+getMesCadena()+"/"+getAnio();
+		return getDiaSemanaCadena()+" "+getDiaMes()+"/"+getMesCadena()+"/"+getAño();
 	}
 	public void mostrarfecha() {
 		System.out.println( "La fecha actual es: " + LocalDate.now() );

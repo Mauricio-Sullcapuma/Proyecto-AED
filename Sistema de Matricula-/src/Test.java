@@ -12,7 +12,7 @@ public class Test {
 	private static ArrayList<Docente> docentes = new ArrayList<Docente>();
 	private static ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
 	private static ArrayList<Curso> cursos = new ArrayList<Curso>();
-	// siesque hubiera mas entidades se aumenta
+	// siesque ubiera mas entidades se aumenta
 	
 	
 	
@@ -26,23 +26,23 @@ public class Test {
 		docentes.add(new Docente("Gloria", "F", 74859632, 22, "Av AQP 123", "12345", "D05", 125));
 		
 		estudiantes.add(new Estudiante("Robert", "M", 52639874, 15, "Av 123", "12345", "E123", false, new Curso [] {
-				new Curso("Fp1", new Hora(), new Fecha(10, 10, 1991)),
-				new Curso("Fp2", new Hora(), new Fecha(12, 5, 1996))
+				new Curso("Fp1", new Hora(), new Fecha(10, 10, 1991), docentes.get(0)),
+				new Curso("Fp2", new Hora(), new Fecha(12, 5, 1996), docentes.get(1))
 		}, "1er grado"));
 		
 		estudiantes.add(new Estudiante("Romina", "F", 52639874, 15, "Av 123", "12345", "E456", false, new Curso [] {
-				new Curso("Fp3", new Hora(), new Fecha(10, 10, 1991)),
-				new Curso("Fp4", new Hora(), new Fecha(12, 5, 1996))
+				new Curso("Fp3", new Hora(), new Fecha(10, 10, 1991), docentes.get(2)),
+				new Curso("Fp4", new Hora(), new Fecha(12, 5, 1996), docentes.get(3))
 		}, "2do grado"));
 		
 		estudiantes.add(new Estudiante("Abelardo", "M", 52639874, 15, "Av 123", "12345", "E789", false, new Curso [] {
-				new Curso("Fp5", new Hora(), new Fecha(10, 10, 1991)),
-				new Curso("Fp6", new Hora(), new Fecha(12, 5, 1996))
+				new Curso("Fp5", new Hora(), new Fecha(10, 10, 1991), docentes.get(4)),
+				new Curso("Fp6", new Hora(), new Fecha(12, 5, 1996), docentes.get(3))
 		}, "3er grado"));
 		
 		estudiantes.add(new Estudiante("Cintia", "F", 52639874, 15, "Av 123", "12345", "E856", false, new Curso [] {
-				new Curso("Fp7", new Hora(), new Fecha(10, 10, 1991)),
-				new Curso("Fp8", new Hora(), new Fecha(12, 5, 1996))
+				new Curso("Fp7", new Hora(), new Fecha(10, 10, 1991), docentes.get(2)),
+				new Curso("Fp8", new Hora(), new Fecha(12, 5, 1996), docentes.get(1))
 		}, "4to grado"));
 		
 		
@@ -70,9 +70,41 @@ public class Test {
 					if (tipo_usuario == 1) {
 						menuEstudiante();
 						
-						// Colocar demas acciones que pertenecen al estudiante
+						int optEst = scan.nextInt();
+						
+						Estudiante e = (Estudiante) usuarioLogeado;
+						
+						if (optEst == 1) {
+							
+							System.out.println("\nBienvenido a Consulta de Notas");
+							System.out.println("Estudiante " + e.getNombre() + ", sus notas son: ");
+							
+							for (Curso c: e.getHorario()) {
+								System.out.println(c.getNombreCurso() + ": " + c.getNotas());
+							}
+							
+						} else if (optEst == 2) {
+							
+							System.out.println("\nBienvenido a Ver Horario");
+							System.out.println("Estudiante " + e.getNombre() + ", sus Horario es: ");
+							
+							for (Curso c: e.getHorario()) {
+								System.out.println(c.getNombreCurso() + ": " + c.getHora());
+							}
+							
+						} else if (optEst == 3) {
+							System.out.println("\nBienvenido a Su Consolidado de Matricula");
+							System.out.println("Estudiante " + e.getNombre() + ", sus matriculas son: ");
+							
+							for (Curso c: e.getHorario()) {
+								System.out.println(c.getNombreCurso() + ": Doc. " + c.getDocente().getNombre());
+							}
+						}
+						
 					} else {
 						menuMaestro();
+						
+						int optDoc = scan.nextInt();
 						
 						// Colocar demas acciones que pertenecen al docente
 					}
