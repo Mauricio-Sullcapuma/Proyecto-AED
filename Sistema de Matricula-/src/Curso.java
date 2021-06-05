@@ -91,6 +91,6 @@ public class Curso {
 		this.docente = docente;
 	}
 	
-		
+	
 	
 }

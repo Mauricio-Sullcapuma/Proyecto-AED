@@ -25,24 +25,33 @@ public class Test {
 		docentes.add(new Docente("German", "M", 74859632, 17, "Av AQP 101", "12345", "D04", 125));
 		docentes.add(new Docente("Gloria", "F", 74859632, 22, "Av AQP 123", "12345", "D05", 125));
 		
+		cursos.add(new Curso("Fp1", new Hora(), new Fecha(10, 10, 1991), docentes.get(0)));
+		cursos.add(new Curso("Fp2", new Hora(), new Fecha(12, 5, 1996), docentes.get(1)));
+		cursos.add(new Curso("Fp3", new Hora(), new Fecha(10, 10, 1991), docentes.get(2)));
+		cursos.add(new Curso("Fp4", new Hora(), new Fecha(12, 5, 1996), docentes.get(3)));
+		cursos.add(new Curso("Fp5", new Hora(), new Fecha(10, 10, 1991), docentes.get(4)));
+		cursos.add(new Curso("Fp6", new Hora(), new Fecha(12, 5, 1996), docentes.get(3)));
+		cursos.add(new Curso("Fp7", new Hora(), new Fecha(10, 10, 1991), docentes.get(2)));
+		cursos.add(new Curso("Fp8", new Hora(), new Fecha(12, 5, 1996), docentes.get(1)));
+		
 		estudiantes.add(new Estudiante("Robert", "M", 52639874, 15, "Av 123", "12345", "E123", false, new Curso [] {
-				new Curso("Fp1", new Hora(), new Fecha(10, 10, 1991), docentes.get(0)),
-				new Curso("Fp2", new Hora(), new Fecha(12, 5, 1996), docentes.get(1))
+				cursos.get(0),
+				cursos.get(1)
 		}, "1er grado"));
 		
 		estudiantes.add(new Estudiante("Romina", "F", 52639874, 15, "Av 123", "12345", "E456", false, new Curso [] {
-				new Curso("Fp3", new Hora(), new Fecha(10, 10, 1991), docentes.get(2)),
-				new Curso("Fp4", new Hora(), new Fecha(12, 5, 1996), docentes.get(3))
+				cursos.get(2),
+				cursos.get(3)
 		}, "2do grado"));
 		
 		estudiantes.add(new Estudiante("Abelardo", "M", 52639874, 15, "Av 123", "12345", "E789", false, new Curso [] {
-				new Curso("Fp5", new Hora(), new Fecha(10, 10, 1991), docentes.get(4)),
-				new Curso("Fp6", new Hora(), new Fecha(12, 5, 1996), docentes.get(3))
+				cursos.get(4),
+				cursos.get(5)
 		}, "3er grado"));
 		
 		estudiantes.add(new Estudiante("Cintia", "F", 52639874, 15, "Av 123", "12345", "E856", false, new Curso [] {
-				new Curso("Fp7", new Hora(), new Fecha(10, 10, 1991), docentes.get(2)),
-				new Curso("Fp8", new Hora(), new Fecha(12, 5, 1996), docentes.get(1))
+				cursos.get(6),
+				cursos.get(7)
 		}, "4to grado"));
 		
 		
@@ -86,7 +95,7 @@ public class Test {
 						} else if (optEst == 2) {
 							
 							System.out.println("\nBienvenido a Ver Horario");
-							System.out.println("Estudiante " + e.getNombre() + ", sus Horario es: ");
+							System.out.println("Estudiante " + e.getNombre() + ", su Horario es: ");
 							
 							for (Curso c: e.getHorario()) {
 								System.out.println(c.getNombreCurso() + ": " + c.getHora());
@@ -106,11 +115,72 @@ public class Test {
 						
 						int optDoc = scan.nextInt();
 						
-						// Colocar demas acciones que pertenecen al docente
+						Docente e = (Docente) usuarioLogeado;
+						
+						if (optDoc == 1) {
+							
+							System.out.println("\nBienvenido a Registrar Notas");
+							
+							System.out.print("  Ingrese codigo del estudiante: ");
+							String cod_est = scan.next();
+							
+							System.out.print("  Ingrese codigo del curso: ");
+							int cod_cur = scan.nextInt();
+							
+							boolean encontrado = false;
+							for (Estudiante est: estudiantes) {
+								if (est.getCodigo_E().equals(cod_est)) {
+									for (Curso curs: est.getHorario()) {
+										if (curs.getCodigoCurso() == cod_cur) {
+											System.out.print("Ingrese Nota 1: ");
+											double nota1 = scan.nextDouble();
+											System.out.print("Ingrese Nota 2: ");
+											double nota2 = scan.nextDouble();
+											System.out.print("Ingrese Nota 3: ");
+											double nota3 = scan.nextDouble();
+											
+											curs.setNotas(new Nota(nota1, nota2, nota3));
+											
+											System.out.println("Notas ingresadas exitosamente");
+											
+											encontrado = true;
+										}
+									}
+								}
+								
+								if (!encontrado) {
+									System.out.println("Estudiante y/o Curso no encontrado");
+								}
+							}
+							
+						} else if (optDoc == 2) {
+							
+							System.out.println("\nBienvenido a Ver Horario");
+							System.out.println("Docente " + e.getNombre() + ", su Horario es: ");
+							
+							for (Curso c: cursos) {
+								if (c.getDocente().getCodigo_D().equals(e.getCodigo_D())) {
+									System.out.println(c.getNombreCurso() + ": " + c.getHora());
+								}
+								
+							}
+							
+						} else if (optDoc == 3) {
+							
+							System.out.println("\nBienvenido a Sus Cursos Dictados");
+							System.out.println("Docente " + e.getNombre() + ", sus cursos son: ");
+							
+							for (Curso c: cursos) {
+								if (c.getDocente().getCodigo_D().equals(e.getCodigo_D())) {
+									System.out.println(c.getNombreCurso());
+								}
+							}
+						}
+						
 					}
 					
 				} else {
-					// mensaje de que no existe el usuario
+					System.out.println("Usuario no encontrado");
 				}
 				
 			} else {
