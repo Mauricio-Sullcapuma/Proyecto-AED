@@ -12,7 +12,7 @@ public class Test {
 	private static ArrayList<Docente> docentes = new ArrayList<Docente>();
 	private static ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
 	private static ArrayList<Curso> cursos = new ArrayList<Curso>();
-	// siesque ubiera mas entidades se aumenta
+	// si es que Hubiera mas entidades se aumenta
 	
 	
 	
@@ -25,33 +25,57 @@ public class Test {
 		docentes.add(new Docente("German", "M", 74859632, 17, "Av AQP 101", "12345", "D04", 125));
 		docentes.add(new Docente("Gloria", "F", 74859632, 22, "Av AQP 123", "12345", "D05", 125));
 		
-		cursos.add(new Curso("Fp1", new Hora(), new Fecha(10, 10, 1991), docentes.get(0)));
-		cursos.add(new Curso("Fp2", new Hora(), new Fecha(12, 5, 1996), docentes.get(1)));
-		cursos.add(new Curso("Fp3", new Hora(), new Fecha(10, 10, 1991), docentes.get(2)));
-		cursos.add(new Curso("Fp4", new Hora(), new Fecha(12, 5, 1996), docentes.get(3)));
-		cursos.add(new Curso("Fp5", new Hora(), new Fecha(10, 10, 1991), docentes.get(4)));
-		cursos.add(new Curso("Fp6", new Hora(), new Fecha(12, 5, 1996), docentes.get(3)));
-		cursos.add(new Curso("Fp7", new Hora(), new Fecha(10, 10, 1991), docentes.get(2)));
-		cursos.add(new Curso("Fp8", new Hora(), new Fecha(12, 5, 1996), docentes.get(1)));
+		cursos.add(new Curso("Comunicacion", new Hora(), new Fecha(1, 1, 2021), docentes.get(0)));
+		cursos.add(new Curso("Matematica", new Hora(), new Fecha(1, 1, 2021), docentes.get(1)));
+		cursos.add(new Curso("CTA", new Hora(), new Fecha(1, 1, 2021), docentes.get(2)));
+		cursos.add(new Curso("Religion", new Hora(), new Fecha(1, 1, 2021), docentes.get(3)));
+		cursos.add(new Curso("Personal Social", new Hora(), new Fecha(1, 1, 2021), docentes.get(4)));
+		cursos.add(new Curso("Historia", new Hora(), new Fecha(1, 1, 2021), docentes.get(3)));
+		cursos.add(new Curso("RazMat", new Hora(), new Fecha(1, 1, 2021), docentes.get(2)));
+		cursos.add(new Curso("RazVerb", new Hora(), new Fecha(1, 1, 2021), docentes.get(1)));
 		
 		estudiantes.add(new Estudiante("Robert", "M", 52639874, 15, "Av 123", "12345", "E123", false, new Curso [] {
 				cursos.get(0),
-				cursos.get(1)
+				cursos.get(1),
+				cursos.get(2),
+				cursos.get(3),
+				cursos.get(4),
+				cursos.get(5),
+				cursos.get(6),
+				cursos.get(7),
 		}, "1er grado"));
 		
 		estudiantes.add(new Estudiante("Romina", "F", 52639874, 15, "Av 123", "12345", "E456", false, new Curso [] {
+				cursos.get(0),
+				cursos.get(1),
 				cursos.get(2),
-				cursos.get(3)
+				cursos.get(3),
+				cursos.get(4),
+				cursos.get(5),
+				cursos.get(6),
+				cursos.get(7),
 		}, "2do grado"));
 		
 		estudiantes.add(new Estudiante("Abelardo", "M", 52639874, 15, "Av 123", "12345", "E789", false, new Curso [] {
+				cursos.get(0),
+				cursos.get(1),
+				cursos.get(2),
+				cursos.get(3),
 				cursos.get(4),
-				cursos.get(5)
+				cursos.get(5),
+				cursos.get(6),
+				cursos.get(7),
 		}, "3er grado"));
 		
 		estudiantes.add(new Estudiante("Cintia", "F", 52639874, 15, "Av 123", "12345", "E856", false, new Curso [] {
+				cursos.get(0),
+				cursos.get(1),
+				cursos.get(2),
+				cursos.get(3),
+				cursos.get(4),
+				cursos.get(5),
 				cursos.get(6),
-				cursos.get(7)
+				cursos.get(7),
 		}, "4to grado"));
 		
 		
@@ -98,7 +122,7 @@ public class Test {
 							System.out.println("Estudiante " + e.getNombre() + ", su Horario es: ");
 							
 							for (Curso c: e.getHorario()) {
-								System.out.println(c.getNombreCurso() + ": " + c.getHora());
+								System.out.println(c.getNombreCurso() + " a las " + c.getHora()+ " Empieza el " + c.getFecha());
 							}
 							
 						} else if (optEst == 3) {
@@ -160,7 +184,7 @@ public class Test {
 							
 							for (Curso c: cursos) {
 								if (c.getDocente().getCodigo_D().equals(e.getCodigo_D())) {
-									System.out.println(c.getNombreCurso() + ": " + c.getHora());
+									System.out.println(c.getNombreCurso() + " a las " + c.getHora()+ " Empieza el " + c.getFecha());
 								}
 								
 							}
@@ -254,7 +278,7 @@ public class Test {
 	
 	public static boolean validarLogin(String codigo, String clave) {
 		if (codigo.charAt(0) == 'E') {
-			// siesque el codigo es de estudiante
+			// si es que el codigo es de estudiante
 			for (int i = 0; i < estudiantes.size(); i++) {
 				if (estudiantes.get(i).getCodigo_E().equals(codigo) && 
 						estudiantes.get(i).getPassword().equals(clave)) {
@@ -298,7 +322,7 @@ public class Test {
 		System.out.println("\n\t\tMENU ESTUDIANTE");
 		System.out.println("\t1. Consultar Notas");
 		System.out.println("\t2. Ver Horario");
-		System.out.println("\t2. Ver Matricula");
+		System.out.println("\t3. Ver Matricula");
 		System.out.println("\tOtro. Salir");
 		System.out.print("\n\tIngrese opcion: ");
 	}
@@ -307,7 +331,7 @@ public class Test {
 		System.out.println("\n\t\tMENU DOCENTE");
 		System.out.println("\t1. Registrar Notas");
 		System.out.println("\t2. Ver Horario");
-		System.out.println("\t2. Ver Cursos");
+		System.out.println("\t3. Ver Cursos");
 		System.out.println("\tOtro. Salir");
 		System.out.print("\n\tIngrese opcion: ");
 	}

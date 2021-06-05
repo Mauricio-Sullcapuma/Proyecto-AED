@@ -1,5 +1,6 @@
 package Tipo_Datos;
 import java.util.Scanner;
+
 public class Estudiante extends Usuario
 {
     private String codigo_E;
