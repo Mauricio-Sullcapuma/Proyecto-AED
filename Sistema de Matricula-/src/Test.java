@@ -190,15 +190,55 @@ public class Test {
 				int optRegistrar = scan.nextInt();
 				
 				if (optRegistrar == 1) {
-					// pediriamos datos del estudiante
-					// Registrar
+					System.out.println("Ingrese nombre: ");
+					String nombre = scan.next();
 					
-					// mensaje de registro mostrando sus datos
+					System.out.println("Ingrese sexo: ");
+					String sexo = scan.next();
+					
+					System.out.println("Ingrese dni: ");
+					int dni = scan.nextInt();
+					
+					System.out.println("Ingrese edad: ");
+					int edad = scan.nextInt();
+					
+					System.out.println("Ingrese codigo: ");
+					String codigo = scan.next();
+					
+					System.out.println("Ingrese contrasena: ");
+					String pass = scan.next();
+					
+					estudiantes.add(
+							new Estudiante(nombre, sexo, dni, edad, "", pass, codigo, false, null, "")
+							);
+					
+					System.out.println("Estudiante agregado exitosamente");
+					
 				} else {
-					// pedimos datos del Maestro
-					// Registrar
 					
-					// mensaje de registro mostrando sus datos
+					System.out.println("Ingrese nombre: ");
+					String nombre = scan.next();
+					
+					System.out.println("Ingrese sexo: ");
+					String sexo = scan.next();
+					
+					System.out.println("Ingrese dni: ");
+					int dni = scan.nextInt();
+					
+					System.out.println("Ingrese edad: ");
+					int edad = scan.nextInt();
+					
+					System.out.println("Ingrese codigo: ");
+					String codigo = scan.next();
+					
+					System.out.println("Ingrese contrasena: ");
+					String pass = scan.next();
+					
+					docentes.add(
+							new Docente(nombre, sexo, dni, edad, "", pass, codigo, 1500)
+							);
+					
+					System.out.println("Docente registrado exitosamente");
 				}
 				
 			}
